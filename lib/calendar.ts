@@ -1,5 +1,6 @@
 import { prisma } from './prisma';
 import { getCalendarEvents } from './google-calendar';
+import { getCostaRicaDateTime } from './costa-rica-time';
 
 const BUSINESS_HOURS = {
   start: 9,
@@ -9,11 +10,6 @@ const BUSINESS_HOURS = {
 const SLOT_DURATION = 30;
 const BREAK_START_HOUR = 12;
 const BREAK_END_HOUR = 13;
-const COSTA_RICA_UTC_OFFSET_HOURS = 6;
-
-function getCostaRicaDateTime(year: number, month: number, day: number, hour: number, minute = 0, second = 0): Date {
-  return new Date(Date.UTC(year, month - 1, day, hour + COSTA_RICA_UTC_OFFSET_HOURS, minute, second));
-}
 
 export function getServiceDurationMinutes(serviceId?: string, selectedPromo = false): number {
   if (selectedPromo) return 180;

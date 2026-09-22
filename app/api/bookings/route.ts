@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { createCalendarEvent } from '@/lib/google-calendar';
+import { parseCostaRicaDateTime } from '@/lib/costa-rica-time';
 
 // Services data (same as in /api/services)
 const SERVICES: Record<string, { name: string; price: number; deposit: number; duration: number }> = {
@@ -71,9 +72,7 @@ export async function POST(request: NextRequest) {
     const totalDeposit = Math.ceil(totalPrice / 2);
 
     // Create start and end times
-    const [startHour, startMinute] = time.split(':').map(Number);
-    const startAt = new Date(date);
-    startAt.setHours(startHour, startMinute, 0, 0);
+    const startAt = parseCostaRicaDateTime(date, time);
 
     const endAt = new Date(startAt);
     endAt.setMinutes(endAt.getMinutes() + durationMinutes);

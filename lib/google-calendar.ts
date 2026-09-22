@@ -1,4 +1,8 @@
 import { google } from 'googleapis';
+import {
+  COSTA_RICA_TIME_ZONE,
+  formatCostaRicaDateTimeForCalendar,
+} from './costa-rica-time';
 
 // Crear autenticación con Service Account
 const getAuth = () => {
@@ -38,12 +42,12 @@ export async function createCalendarEvent(event: {
         summary: event.summary,
         description: event.description,
         start: {
-          dateTime: event.startTime.toISOString(),
-          timeZone: 'America/Costa_Rica',
+          dateTime: formatCostaRicaDateTimeForCalendar(event.startTime),
+          timeZone: COSTA_RICA_TIME_ZONE,
         },
         end: {
-          dateTime: event.endTime.toISOString(),
-          timeZone: 'America/Costa_Rica',
+          dateTime: formatCostaRicaDateTimeForCalendar(event.endTime),
+          timeZone: COSTA_RICA_TIME_ZONE,
         },
         reminders: {
           useDefault: true,
@@ -112,12 +116,12 @@ export async function updateCalendarEvent(
         summary: event.summary,
         description: event.description,
         start: {
-          dateTime: event.startTime.toISOString(),
-          timeZone: 'America/Costa_Rica',
+          dateTime: formatCostaRicaDateTimeForCalendar(event.startTime),
+          timeZone: COSTA_RICA_TIME_ZONE,
         },
         end: {
-          dateTime: event.endTime.toISOString(),
-          timeZone: 'America/Costa_Rica',
+          dateTime: formatCostaRicaDateTimeForCalendar(event.endTime),
+          timeZone: COSTA_RICA_TIME_ZONE,
         },
         reminders: {
           useDefault: true,
