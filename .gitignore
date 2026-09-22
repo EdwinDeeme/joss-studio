@@ -1,0 +1,38 @@
+# build output
+dist/
+.next/
+.vercel/
+# generated types
+.astro/
+tsconfig.tsbuildinfo
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# local uploads
+public/uploads/inspirations/*
+!public/uploads/inspirations/.gitkeep
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# local editor settings
+.vscode/
+
+# legacy and local backups
+backups/
+src-old-astro/
